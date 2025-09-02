@@ -21,9 +21,9 @@ Presenting my personal portfolio website !  This project is designed to showcase
 - `app.js` → JavaScript logic  
 - `assets/` → Images & media  
 
-## 🚀 Deployment
+## 🚀 Live Demo 
 This portfolio is live at:  
-👉 **https://your-username.github.io/your-repo-name/**
+👉 ** https://yogirajhub.github.io/My_Portfolio/**
 
 ---
 ⭐ If you like this project, don't forget to star the repository!
