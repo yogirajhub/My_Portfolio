@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yogiraj Gautam — Portfolio</title>
+  <meta name="description" content="Portfolio of Yogiraj Gautam — Full‑stack developer (MERN) and Java/DSA enthusiast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --bg-soft:#0f1624;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --brand:#7c3aed;   /* violet */
+      --brand-2:#06b6d4; /* cyan */
+      --accent:#22d3ee;
+      --glow: 0 0 30px rgba(124,58,237,.45), 0 0 60px rgba(34,211,238,.25);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--text); background: radial-gradient(1200px 800px at 80% -10%, rgba(124,58,237,.15),transparent),
+                         radial-gradient(800px 600px at 10% 120%, rgba(34,211,238,.12),transparent),
+                         var(--bg);
+      overflow-x: hidden;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.9}
+    .container{width:min(1120px, 92%); margin:0 auto}
+
+    /* NAV */
+    nav{position:sticky; top:0; z-index:50; background:rgba(11,15,23,.6); backdrop-filter:blur(12px); border-bottom:1px solid rgba(148,163,184,.1)}
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.4px}
+    .brand .logo{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:var(--glow)}
+    .nav-links{display:flex; gap:22px}
+    .nav-links a{color:var(--text); opacity:.8}
+    .nav-actions{display:flex; gap:12px; align-items:center}
+    .btn{border:1px solid rgba(148,163,184,.22); padding:10px 14px; border-radius:12px; color:var(--text); background:rgba(17,24,39,.55)}
+    .btn.primary{border-color:transparent; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:var(--glow); font-weight:600}
+    .menu{display:none}
+
+    /* HERO */
+    header.hero{position:relative; padding:86px 0 40px;}
+    .grid-bg{position:absolute; inset:-1px; pointer-events:none; mask-image:radial-gradient(closest-side, #000 45%, transparent 85%)}
+    .grid-bg::before{content:""; position:absolute; inset:0; background:
+      linear-gradient(rgba(148,163,184,.08) 1px, transparent 1px) 0 0/ 30px 30px,
+      linear-gradient(90deg, rgba(148,163,184,.08) 1px, transparent 1px) 0 0/ 30px 30px;
+    }
+    .hero-inner{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center}
+    .hero h1{font-size:clamp(36px, 4vw, 56px); line-height:1.05; margin:0 0 12px}
+    .hero .subtitle{color:var(--muted); font-size:clamp(16px,1.6vw,18px)}
+    .pill{display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(124,58,237,.35); background:rgba(124,58,237,.08); padding:8px 12px; border-radius:999px; font-size:14px; margin-bottom:14px}
+    .pill .dot{width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 12px rgba(34,211,238,.8)}
+    .cta{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
+
+    .card-hero{position:relative; border:1px solid rgba(148,163,184,.16); background:linear-gradient(180deg, rgba(17,24,39,.6), rgba(17,24,39,.3)); padding:18px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .floating{animation: float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+    /* SECTIONS */
+    section{padding:60px 0}
+    .section-title{font-size:26px; margin:0 0 18px}
+    .muted{color:var(--muted)}
+
+    /* ABOUT */
+    .about{display:grid; grid-template-columns:1.2fr .8fr; gap:24px}
+    .info-list{display:grid; grid-template-columns:1fr 1fr; gap:10px 18px}
+    .info-list div{background:rgba(17,24,39,.6); border:1px solid rgba(148,163,184,.15); padding:12px; border-radius:12px}
+
+    /* SKILLS */
+    .tags{display:flex; flex-wrap:wrap; gap:10px}
+    .tag{padding:8px 12px; font-size:14px; border-radius:999px; border:1px solid rgba(148,163,184,.2); background:rgba(17,24,39,.55)}
+    .tag.strong{background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(6,182,212,.25)); border-color:transparent}
+
+    /* PROJECTS */
+    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .project{position:relative; padding:16px; border-radius:16px; background:rgba(17,24,39,.6); border:1px solid rgba(148,163,184,.18); box-shadow:var(--shadow); overflow:hidden}
+    .project h3{margin:8px 0 6px}
+    .project p{margin:0 0 8px}
+    .project .meta{font-size:13px; color:var(--muted)}
+    .chip{display:inline-block; margin:6px 6px 0 0; padding:6px 10px; font-size:12px; border-radius:999px; border:1px solid rgba(148,163,184,.2)}
+    .project .shine{position:absolute; inset:-1px; background:radial-gradient(500px 200px at -10% -10%, rgba(124,58,237,.18), transparent 40%),
+                                radial-gradient(400px 160px at 110% 110%, rgba(6,182,212,.18), transparent 40%);
+                    pointer-events:none}
+
+    /* EXPERIENCE */
+    .timeline{position:relative; padding-left:24px}
+    .timeline::before{content:""; position:absolute; left:6px; top:8px; bottom:8px; width:2px; background:linear-gradient(var(--brand), var(--brand-2))}
+    .item{position:relative; padding:10px 0 10px 14px}
+    .item::before{content:""; position:absolute; left:-1px; top:16px; width:12px; height:12px; border-radius:50%; background:var(--brand-2); box-shadow:0 0 12px rgba(6,182,212,.9)}
+
+    /* LEADERSHIP */
+    .lead-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .lead-card{padding:16px; border:1px solid rgba(148,163,184,.18); background:rgba(17,24,39,.6); border-radius:14px}
+
+    /* CONTACT */
+    .contact{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
+    form{display:grid; gap:10px}
+    input, textarea{padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:#0b1220; color:var(--text)}
+    textarea{min-height:120px}
+    .socials{display:flex; gap:12px; flex-wrap:wrap}
+    .socials a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:rgba(17,24,39,.6)}
+
+    /* FOOTER */
+    footer{padding:28px 0 40px; color:var(--muted); border-top:1px solid rgba(148,163,184,.1)}
+
+    /* REVEAL ANIMATIONS */
+    .reveal{opacity:0; transform:translateY(14px); transition: all .7s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+      .about, .contact{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .menu{display:inline-flex}
+    }
+    @media (max-width: 640px){
+      .projects{grid-template-columns:1fr}
+      .info-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars" class="grid-bg" aria-hidden="true"></canvas>
+
+  <nav>
+    <div class="container nav-wrap">
+      <div class="brand"><span class="logo"></span> <span>Yogiraj&nbsp;Gautam</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn" href="#projects">View Work</a>
+        <!-- Replace the href link with your hosted resume path -->
+        <a class="btn primary" href="Yogiraj_Resume_New.pdf" id="resumeBtn">Download Résumé</a>
+        <button class="btn menu" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="hero-inner">
+      <div>
+        <div class="pill"><span class="dot"></span> Available for Full time Job, internships & freelance</div>
+        <h1>Building fast, delightful <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">web experiences</span>.</h1>
+        <p class="subtitle">I'm a final‑year CSE student in Greater Noida specializing in MERN stack development and Java (DSA). I love turning ideas into polished, performant UIs and robust backends.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Let's collaborate</a>
+          <a class="btn" href="https://github.com/yogirajhub" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/yogiraj-gautam-v18" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="card-hero floating reveal" data-reveal>
+        <img src="official_photo.jpg" alt="Code preview" style="width:100%; height:320px; object-fit:var(--card); border-radius:50px; border:1px solid rgba(148,163,184,.2)"/>
+        <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap">
+          <span class="tag strong">MERN</span>
+          <span class="tag">Java & DSA</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container about">
+      <div>
+        <h2 class="section-title">About</h2>
+        <p class="muted">Hi, I'm <strong>Yogiraj Gautam</strong> (Greater Noida, Uttar Pradesh). I'm pursuing B.Tech in CSE at IEC College of Engineering & Technology (2022–2026). I've completed multiple full‑stack projects, practiced 100+ DSA problems in Java, and I'm focused on backend with Node.js & Express.</p>
+        <div class="info-list" style="margin-top:14px">
+          <div><strong>Location</strong><br/>Greater Noida, U.P.</div>
+          <div><strong>Phone</strong><br/><a href="tel:+917000465791">+91 70004 65791</a></div>
+          <div><strong>Email</strong><br/><a href="mailto:yogirajgautam18@gmail.com">yogirajgautam18@gmail.com</a></div>
+          <div><strong>Open to</strong><br/>Internships • Freelance</div>
+        </div>
+      </div>
+      <div class="card-hero reveal" data-reveal>
+        <h3 style="margin:8px 0 8px">Core Focus</h3>
+        <p class="muted">Clean, accessible interfaces; performant APIs; and smooth micro‑interactions that make apps feel alive.</p>
+        <ul class="muted" style="margin:10px 0 0; padding-left:18px">
+          <li>Frontend: HTML, CSS, Bootstrap, React</li>
+          <li>Backend: Node.js, Express.js</li>
+          <li>Databases: MongoDB, MySQL</li>
+          <li>Tools: VS Code, Git, GitHub, Postman, ChatGPT</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="tags">
+        <span class="tag strong">JavaScript</span>
+        <span class="tag">Java</span>
+        <span class="tag">C</span>
+        <span class="tag">Python (Basics)</span>
+        <span class="tag strong">React</span>
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag strong">Node.js</span>
+        <span class="tag strong">Express.js</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Git & GitHub</span>
+        <span class="tag">Postman</span>
+        <span class="tag">DSA (Java)</span>
+        <span class="tag">CN • DBMS • OOPs</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="projects" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="item reveal" data-reveal>
+          <h3>Web Designing Trainee — Dreamvessels Technology Pvt. Ltd.</h3>
+          <div class="muted">Apr 2024 – Jul 2024 • Noida, U.P.</div>
+          <ul class="muted" style="margin:8px 0 0; padding-left:18px">
+            <li>Built a background image slider with HTML, CSS, and JavaScript.</li>
+            <li>Implemented animations and sidebar‑driven image transitions.</li>
+            <li>Explored reporting test results to team members via web UI.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="container">
+      <h2 class="section-title">Leadership & Extracurricular</h2>
+      <div class="lead-grid">
+        <div class="lead-card reveal" data-reveal>
+          <h3>Sports Achievements</h3>
+          <p class="muted">Gold Medalist — Kabaddi Zonal Sports Competition 2023 (AKTU). State‑level cricket player (MPCA). Learned discipline, leadership, and team‑building through sportsmanship.</p>
+        </div>
+        <div class="lead-card reveal" data-reveal>
+          <h3>College Events</h3>
+          <p class="muted">Volunteer & Coordinator for IEC‑CET Annual Fest (INNOVISION 2023 & 2024) and other events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact">
+      <div>
+        <h2 class="section-title">Contact</h2>
+        <p class="muted">Want to build something awesome or discuss an opportunity? Drop a message — I usually reply within a day.</p>
+        <form name="contact" onsubmit="event.preventDefault(); alert('Thanks! I\'ll get back to you soon.'); this.reset();">
+          <input required placeholder="Your name" />
+          <input type="email" required placeholder="Email" />
+          <textarea placeholder="Message"></textarea>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn primary" type="submit">Send Message</button>
+            <a class="btn" href="mailto:yogirajgautam18@gmail.com">Email Directly</a>
+          </div>
+        </form>
+      </div>
+      <div class="card-hero reveal" data-reveal>
+        <h3 style="margin:8px 0 8px">Connect</h3>
+        <div class="socials">
+          <a href="https://github.com/yogirajhub" target="_blank" rel="noreferrer">🐙 GitHub</a>
+          <a href="https://www.linkedin.com/in/yogiraj-gautam-v18" target="_blank" rel="noreferrer">in LinkedIn</a>
+          <a href="tel:+917000465791">📞 Phone</a>
+          <a href="mailto:yogirajgautam18@gmail.com">✉️ Email</a>
+        </div>
+        <p class="muted" style="margin-top:10px">Based in Greater Noida (U.P), India</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="year"></span> Yogiraj Gautam • Built with HTML, CSS & JS</div>
+      <div class="muted">Theme: Neo‑Tech (glass + neon)</div>
+    </div>
+  </footer>
+
+  <script>
+    // === Particle Stars Background ===
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [], w, h;
+    function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = Math.max(window.innerHeight, document.body.scrollHeight); }
+    function initStars(){
+      stars = Array.from({length: Math.ceil(w*h/18000)}, () => ({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*1.2+0.2,
+        s: Math.random()*0.6+0.2,
+      }));
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for(const p of stars){
+        p.y += p.s*0.25; if(p.y>h) p.y=0;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(124,58,237,0.6)'; ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize', ()=>{ resize(); initStars(); });
+    resize(); initStars(); draw();
+
+    // === Scroll Reveal ===
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, {threshold: 0.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=> io.observe(el));
+
+    // === Mobile Menu (simple scroll to Projects) ===
+    document.getElementById('menuBtn')?.addEventListener('click', ()=> location.hash = '#projects');
+
+    // === Year ===
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // === Projects Data (render from resume) ===
+    const projects = [
+      {
+        title: 'Random Password Generator',
+        period: 'Mar 2025',
+        summary: 'Generates secure, unique passwords based on user preferences with modern UI.',
+        tech: ['HTML', 'CSS', 'JavaScript'],
+        link: '#'
+      },
+      {
+        title: 'Spotify Clone (UI)',
+        period: 'Jan 2025',
+        summary: 'Responsive front‑end replica of Spotify: header/nav, sidebar, playlists, and fixed footer player.',
+        tech: ['HTML', 'CSS (Grid/Flexbox)', 'JavaScript (Basic)'],
+        link: '#'
+      },
+      {
+        title: 'Simon Says Game',
+        period: 'Dec 2024',
+        summary: 'Memory game with animated color sequences, input handling, and score tracking.',
+        tech: ['HTML', 'CSS', 'JavaScript'],
+        link: '#'
+      },
+    ];
+
+    const grid = document.getElementById('projectGrid');
+    projects.forEach(p=>{
+      const el = document.createElement('article');
+      el.className = 'project reveal';
+      el.setAttribute('data-reveal','');
+      el.innerHTML = `
+        <div class="shine"></div>
+        <div class="meta">${p.period}</div>
+        <h3>${p.title}</h3>
+        <p class="muted">${p.summary}</p>
+        <div>${p.tech.map(t=>`<span class='chip'>${t}</span>`).join('')}</div>
+        ${p.link!== '#' ? `<p style="margin-top:8px"><a href="${p.link}" target="_blank" rel="noreferrer">View Project ↗</a></p>`: ''}
+      `;
+      grid.appendChild(el);
+      io.observe(el);
+    });
+
+    // === Resume Download ===
+    // Replace this path with your hosted PDF URL (e.g., GitHub Pages /assets/Yogiraj_Resume_New.pdf)
+    const resumeUrl = './Yogiraj_Resume_New.pdf';
+    document.getElementById('resumeBtn').addEventListener('click', (e)=>{
+      e.preventDefault();
+      fetch(resumeUrl).then(r=>{
+        if(!r.ok) throw new Error('Resume not found');
+        const a = document.createElement('a');
+        a.href = resumeUrl; a.download = 'Yogiraj_Resume.pdf';
+        document.body.appendChild(a); a.click(); a.remove();
+      }).catch(()=>{
+        window.location.href = 'mailto:yogirajgautam18@gmail.com?subject=Request%20for%20Resume&body=Hi%20Yogiraj%2C%20please%20share%20your%20resume.';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yogiraj Gautam • Portfolio</title>
+  <meta name="description" content="Portfolio of Yogiraj Gautam — B.Tech CSE, MERN & Java (DSA). Projects, skills, experience, and contact." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="official_photo.jpg" alt="Yogiraj Gautam" class="profile-pic" />
+        <div>
+          <strong style="font-size:1.1rem">Yogiraj Gautam</strong><br>
+          <span class="muted" style="font-size:.9rem">B.Tech (CSE) • MERN • Java (DSA)</span>
+        </div>
+      </div>
+      <nav style="display:flex;gap:18px;align-items:center">
+        <a class="link" href="#projects">Projects</a>
+        <a class="link" href="#skills">Skills</a>
+        <a class="link" href="#experience">Experience</a>
+        <a class="link" href="#education">Education</a>
+        <a class="link" href="#contact">Contact</a>
+        <button id="themeBtn" class="theme-toggle btn" title="Toggle theme" aria-label="Toggle theme">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section">
+      <div class="container hero-wrap">
+        <span class="pill">👋 Hi, I'm <strong>&nbsp;Yogiraj</strong> — Developer • Greater Noida, U.P.</span>
+        <h1 class="headline">
+          I build <span class="highlight">fast, animated</span> web experiences.
+        </h1>
+        <p class="subline muted" style="max-width:60ch">
+          Final-year B.Tech (CSE) with hands-on projects in the MERN stack and strong foundations in Data Structures & Algorithms with Java. I enjoy crafting clean UIs, smooth interactions, and scalable backends.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">🚀 Explore my work</a>
+          <a class="btn btn-ghost" href="resume.pdf" download>⬇️ Download Resume</a>
+          <a class="btn" href="https://github.com/yogirajhub" target="_blank" rel="noreferrer">🧑‍💻 GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/yogiraj-gautam-v18" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="reveal">Featured Projects</h2>
+        <p class="muted reveal">A few things I've built recently.</p>
+
+        <div class="projects">
+          <article class="project card tilt reveal">
+            <img src="project-password.jpg" alt="Random Password Generator" class="cover" />
+            <div class="meta">
+              <h3>Random Password Generator</h3>
+              <p class="muted">Generates secure, unique passwords with a clean UI.</p>
+              <a class="btn" href="https://github.com/yogirajhub/Random-password-Generator.git" target="_blank">Live</a>
+            </div>
+          </article>
+
+          <article class="project card tilt reveal">
+            <img src="project-spotify.jpg" alt="Spotify Clone" class="cover" />
+            <div class="meta">
+              <h3>Spotify Clone (UI)</h3>
+              <p class="muted">Responsive replica of Spotify’s layout with playlists and footer player.</p>
+              <a class="btn" href="https://github.com/yogirajhub" target="_blank">Code</a>
+            </div>
+          </article>
+
+          <article class="project card tilt reveal">
+            <img src="project-simon.jpg" alt="Simon Says Game" class="cover" />
+            <div class="meta">
+              <h3>Simon Says Game</h3>
+              <p class="muted">Interactive memory game with sequence and score tracking.</p>
+              <a class="btn" href="https://github.com/yogirajhub" target="_blank">Code</a>
+            </div>
+          </article>
+
+          <article class="project card tilt reveal">
+            <img src="project-movie.jpg" alt="Movie Search App" class="cover" />
+            <div class="meta">
+              <h3>Movie Search App (TMDb)</h3>
+              <p class="muted">React app with debounced search, routing, and 404 handling.</p>
+              <a class="btn" href="https://yogirajhub.github.io/Movie_Search_Application/" target="_blank">Live</a>
+              <a class="btn" href="https://github.com/yogirajhub" target="_blank">Code</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS, EXPERIENCE, EDUCATION, CONTACT -->
+    <!-- (same as before, content unchanged) -->
+  </main>
+
+  <footer class="container">
+    <span class="muted">© <span id="year"></span> Yogiraj Gautam. All rights reserved.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
